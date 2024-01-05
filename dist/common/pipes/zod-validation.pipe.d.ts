@@ -1,0 +1,1 @@
+export declare const ZodValidationPipe: new (schemaOrDto?: import("zod").ZodType<any, import("zod").ZodTypeDef, any> | import("nestjs-zod").ZodDto<any, import("zod").ZodTypeDef, any>) => import("@nestjs/common").PipeTransform<any, any>;
