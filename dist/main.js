@@ -3,19 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const express_1 = require("express");
-const admin = require("firebase-admin");
-const app_1 = require("firebase/app");
 const nestjs_zod_1 = require("nestjs-zod");
 const app_module_1 = require("./app.module");
 const entity_notfound_filter_1 = require("./common/filters/entity-notfound.filter");
 const http_error_filter_1 = require("./common/filters/http-error.filter");
 const unique_voilation_error_filter_1 = require("./common/filters/unique-voilation-error.filter");
-const firebase_config_1 = require("./config/firebase.config");
 const swagger_1 = require("./swagger");
 async function startServer() {
     try {
-        admin.initializeApp({ credential: firebase_config_1.fireBaseAdminConfig });
-        (0, app_1.initializeApp)(firebase_config_1.fireBaseClientConfig);
         const app = await core_1.NestFactory.create(app_module_1.AppModule);
         app.use((0, express_1.json)({ limit: '50mb' }));
         app.use((0, express_1.urlencoded)({ limit: '50mb', extended: true }));

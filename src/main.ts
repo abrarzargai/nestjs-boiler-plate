@@ -14,10 +14,10 @@ import { setupSwagger } from './swagger';
 async function startServer() {
   try {
     // Firebase Admin Initialization
-    admin.initializeApp({ credential: fireBaseAdminConfig });
+    // admin.initializeApp({ credential: fireBaseAdminConfig });
 
     // Firebase Client Initialization
-    initializeApp(fireBaseClientConfig);
+    // initializeApp(fireBaseClientConfig);
 
     const app = await NestFactory.create(AppModule);
 

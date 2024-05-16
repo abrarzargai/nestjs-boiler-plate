@@ -12,6 +12,7 @@ const config_1 = require("@nestjs/config");
 const core_1 = require("@nestjs/core");
 const typeorm_1 = require("@nestjs/typeorm");
 const nestjs_zod_1 = require("nestjs-zod");
+const country_module_1 = require("./app/country/country.module");
 const database_config_1 = require("./config/database.config");
 let AppModule = class AppModule {
 };
@@ -21,14 +22,14 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot(),
             typeorm_1.TypeOrmModule.forRoot(database_config_1.databaseConfigs),
+            country_module_1.CountryModule,
         ],
         providers: [
             {
                 provide: core_1.APP_PIPE,
                 useClass: nestjs_zod_1.ZodValidationPipe,
             },
-        ],
-        controllers: []
+        ]
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
