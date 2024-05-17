@@ -1,4 +1,4 @@
 export enum EnumName {
-    OptionOne = 'option-one',
-    OptionTwo = 'option-two',
+  OptionOne = "option-one",
+  OptionTwo = "option-two",
 }

@@ -1,15 +1,18 @@
-import { Logger, ValidationPipe } from '@nestjs/common';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { json, urlencoded } from 'express';
-import * as admin from 'firebase-admin';
-import { initializeApp } from 'firebase/app';
-import { patchNestJsSwagger } from 'nestjs-zod';
-import { AppModule } from './app.module';
-import { EntityNotFoundErrorFilter } from './common/filters/entity-notfound.filter';
-import { HttpErrorFilter } from './common/filters/http-error.filter';
-import { QueryFailedErrorFilter } from './common/filters/unique-voilation-error.filter';
-import { fireBaseAdminConfig, fireBaseClientConfig } from './config/firebase.config';
-import { setupSwagger } from './swagger';
+import { Logger, ValidationPipe } from "@nestjs/common";
+import { HttpAdapterHost, NestFactory } from "@nestjs/core";
+import { json, urlencoded } from "express";
+import * as admin from "firebase-admin";
+import { initializeApp } from "firebase/app";
+import { patchNestJsSwagger } from "nestjs-zod";
+import { AppModule } from "./app.module";
+import { EntityNotFoundErrorFilter } from "./common/filters/entity-notfound.filter";
+import { HttpErrorFilter } from "./common/filters/http-error.filter";
+import { QueryFailedErrorFilter } from "./common/filters/unique-voilation-error.filter";
+import {
+  fireBaseAdminConfig,
+  fireBaseClientConfig,
+} from "./config/firebase.config";
+import { setupSwagger } from "./swagger";
 
 async function startServer() {
   try {
@@ -22,8 +25,8 @@ async function startServer() {
     const app = await NestFactory.create(AppModule);
 
     // Middleware
-    app.use(json({ limit: '50mb' }));
-    app.use(urlencoded({ limit: '50mb', extended: true }));
+    app.use(json({ limit: "50mb" }));
+    app.use(urlencoded({ limit: "50mb", extended: true }));
 
     // Validation Pipeline
     app.useGlobalPipes(new ValidationPipe());
@@ -38,7 +41,7 @@ async function startServer() {
     app.enableCors();
 
     // Zod Schema in Swagger
-    patchNestJsSwagger()
+    patchNestJsSwagger();
 
     // Swagger
     setupSwagger(app);
@@ -54,7 +57,7 @@ async function startServer() {
    `);
     });
   } catch (error) {
-    Logger.error(error, 'Server Initialization Failed')
+    Logger.error(error, "Server Initialization Failed");
   }
 }
 startServer();

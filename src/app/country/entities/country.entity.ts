@@ -1,11 +1,11 @@
-import { baseEntity } from 'src/utils/baseEntity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { baseEntity } from "src/utils/baseEntity";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Country extends baseEntity {
-    @PrimaryGeneratedColumn()
-    id: string;
+  @PrimaryGeneratedColumn()
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 }

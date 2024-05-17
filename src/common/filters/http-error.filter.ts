@@ -1,10 +1,19 @@
-import { ArgumentsHost, Catch, ExceptionFilter, InternalServerErrorException, Logger } from '@nestjs/common';
-import { Response } from 'express';
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  InternalServerErrorException,
+  Logger,
+} from "@nestjs/common";
+import { Response } from "express";
 
 @Catch(InternalServerErrorException)
 export class HttpErrorFilter implements ExceptionFilter {
-  private readonly logger = new Logger('HttpErrorFilter');
-  public catch(exception: InternalServerErrorException, host: ArgumentsHost): Response {
+  private readonly logger = new Logger("HttpErrorFilter");
+  public catch(
+    exception: InternalServerErrorException,
+    host: ArgumentsHost,
+  ): Response {
     const ctx = host.switchToHttp();
     const request = ctx.getRequest();
     const response = ctx.getResponse();
