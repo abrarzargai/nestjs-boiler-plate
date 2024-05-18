@@ -1,4 +1,5 @@
-export enum EnumName {
-  OptionOne = "option-one",
-  OptionTwo = "option-two",
+export enum userRole {
+  ADMIN = "admin",
+  LAWYER = "lawyer",
+  CLIENT = "client",
 }

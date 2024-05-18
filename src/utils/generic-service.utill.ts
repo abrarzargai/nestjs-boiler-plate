@@ -1,37 +1,37 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import {
-  FindManyOptions,
-  FindOneOptions,
-  FindOptionsWhere,
-  Repository,
-  UpdateResult,
-} from "typeorm";
+  DeleteResult, FindManyOptions,
+  FindOneOptions, FindOptionsWhere,
+  ObjectLiteral, Repository, UpdateResult
+} from 'typeorm';
 
-@Injectable()
-export class GenericService<T> {
-  constructor(
-    @InjectRepository()
-    private readonly repository: Repository<T>,
-  ) {}
+export class GenericService<T extends ObjectLiteral> {
+  constructor(private readonly entityRepository: Repository<T>) {}
 
   create(createDto: any): Promise<T> {
-    return this.repository.save(createDto);
+    return this.entityRepository.save(createDto);
+  }
+
+  count(options: FindManyOptions<T>): Promise<number> {
+    return this.entityRepository.count(options);
   }
 
   findAll(options: FindManyOptions<T>): Promise<T[]> {
-    return this.repository.find(options);
+    return this.entityRepository.find(options);
   }
 
   findOne(options: FindOneOptions<T>): Promise<T> {
-    return this.repository.findOne(options);
+    return this.entityRepository.findOneOrFail(options);
   }
 
   update(options: FindOptionsWhere<T>, updateDto: any): Promise<UpdateResult> {
-    return this.repository.update(options, updateDto);
+    return this.entityRepository.update(options, updateDto);
   }
 
-  remove(options: FindOptionsWhere<T>): Promise<UpdateResult> {
-    return this.repository.softDelete(options);
+  remove(options: FindOptionsWhere<T>): Promise<DeleteResult> {
+    return this.entityRepository.delete(options);
+  }
+
+  softDelete(options: FindOptionsWhere<T>): Promise<UpdateResult> {
+    return this.entityRepository.softDelete(options);
   }
 }

@@ -4,6 +4,7 @@ import { APP_PIPE } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ZodValidationPipe } from "nestjs-zod";
 import { CountryModule } from "./app/country/country.module";
+import { UserModule } from "./app/user/user.module";
 import { databaseConfigs } from "./config/database.config";
 
 @Module({
@@ -15,6 +16,7 @@ import { databaseConfigs } from "./config/database.config";
 
     // App Modules
     CountryModule,
+    UserModule
   ],
   providers: [
     {

@@ -44,6 +44,6 @@ export class CountryController {
 
   @Delete(":id")
   remove(@Param("id") id: string): Promise<UpdateResult> {
-    return this.countryService.remove({ id });
+    return this.countryService.softDelete({ id });
   }
 }
