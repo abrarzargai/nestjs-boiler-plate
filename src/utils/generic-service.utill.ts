@@ -5,33 +5,34 @@ import {
 } from 'typeorm';
 
 export class GenericService<T extends ObjectLiteral> {
-  constructor(private readonly entityRepository: Repository<T>) {}
+  constructor(private readonly entity: Repository<T>) {}
 
   create(createDto: any): Promise<T> {
-    return this.entityRepository.save(createDto);
+    return this.entity.save(createDto);
   }
 
   count(options: FindManyOptions<T>): Promise<number> {
-    return this.entityRepository.count(options);
+    return this.entity.count(options);
   }
 
   findAll(options: FindManyOptions<T>): Promise<T[]> {
-    return this.entityRepository.find(options);
+    return this.entity.find(options);
   }
 
   findOne(options: FindOneOptions<T>): Promise<T> {
-    return this.entityRepository.findOneOrFail(options);
+    return this.entity.findOneOrFail(options);
   }
 
   update(options: FindOptionsWhere<T>, updateDto: any): Promise<UpdateResult> {
-    return this.entityRepository.update(options, updateDto);
+    return this.entity.update(options, updateDto);
   }
 
   remove(options: FindOptionsWhere<T>): Promise<DeleteResult> {
-    return this.entityRepository.delete(options);
+    return this.entity.delete(options);
   }
 
   softDelete(options: FindOptionsWhere<T>): Promise<UpdateResult> {
-    return this.entityRepository.softDelete(options);
+    return this.entity.softDelete(options);
   }
+
 }

@@ -18,8 +18,10 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
-    "strict": true
-    
+    "strict": true,
+    "paths": {
+      "@utils/*": ["src/utils/*"]
+    }
   },
   
     "watchOptions": {

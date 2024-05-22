@@ -1,35 +1,39 @@
-export const ApiOperationDetails = {
-  signup: {
-    summary: 'SignUp',
-    description: 'Create a new user',
+export const API_OPERATIONS = {
+  USER:{
+    SIGNUP: {
+      summary: 'SignUp',
+      description: 'Create a new user',
+    },
+    LOGIN: {
+      summary: 'Login',
+      description: 'login user account',
+    },
   },
-  login: {
-    summary: 'Login',
-    description: 'login user account',
-  },
-    create: {
+  DEFAULT :{
+    CREATE: {
       summary: 'Create a new record',
       description: 'Endpoint to create a new record in the database',
     },
-    findAll: {
+    FIND_ALL: {
       summary: 'Retrieve all records',
       description: 'Endpoint to retrieve all records from the database',
     },
-    findOne: {
+    FIND_ONE: {
       summary: 'Retrieve a single record by ID',
       description: 'Endpoint to retrieve a single record by its unique identifier',
     },
-    update: {
+    UPDATE: {
       summary: 'Update a record by ID',
       description: 'Endpoint to update an existing record in the database',
     },
-    remove: {
+    REMOVE: {
       summary: 'Delete a record by ID',
       description: 'Endpoint to delete a record from the database',
     },
-    softDelete: {
+    SOFT_REMOVE: {
       summary: 'Soft delete a record by ID',
       description: 'Endpoint to soft delete a record from the database',
     },
+  }
   };
   

@@ -1,8 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ApiOperationDetails } from 'src/common/constants/api-operation-details';
-import { HttpResponseMessage } from 'src/common/constants/http-response-message';
-import { responseMessage } from 'src/common/decorators/response-message.decorator';
+import { API_OPERATIONS } from 'src/common/constants/api-operation-details';
 import { LoginDto } from './dto/login.dto';
 import { SignUpDto } from './dto/signup.dto';
 import { UserService } from './user.service';
@@ -13,41 +11,16 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('/signup')
-  @ApiOperation(ApiOperationDetails.create) 
+  @ApiOperation(API_OPERATIONS.USER.SIGNUP) 
   @HttpCode(HttpStatus.CREATED)
   signup(@Body() signUpDto: SignUpDto) {
     return this.userService.signUp(signUpDto);
   }
 
   @Post('/login')
-  @ApiOperation(ApiOperationDetails.login) 
+  @ApiOperation(API_OPERATIONS.USER.LOGIN) 
   @HttpCode(HttpStatus.OK)
   login(@Body() loginDto: LoginDto): Promise<{ token: string }> {
     return this.userService.login(loginDto);
   }
-  
-  // @Post('/login')
-  // login(@Body() loginDto: LoginDto): Promise<{ token: string }> {
-  //   return this.userService.login(loginDto);
-  // }
-
-  // @Get()
-  // findAll() {
-  //   return this.userService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.userService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.userService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.userService.remove(+id);
-  // }
 }
