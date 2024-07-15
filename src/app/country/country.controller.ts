@@ -10,7 +10,7 @@ import {
   Post,
 } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
-import { API_OPERATIONS } from "src/common/constants/api-operation-details";
+import { API_OPERATIONS } from "../../common/constants/api-operation-details";
 import { UpdateResult } from "typeorm";
 import { CountryService } from "./country.service";
 import { CreateCountryDto } from "./dto/create-country.dto";
