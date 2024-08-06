@@ -1,12 +1,12 @@
 import { Module } from "@nestjs/common";
-import { CountryService } from "./country.service";
-import { CountryController } from "./country.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { CountryService } from "./country.service";
 import { Country } from "./entities/country.entity";
+import { CountryResolver } from "./country.resolver";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Country])],
-  controllers: [CountryController],
-  providers: [CountryService],
+  controllers: [],
+  providers: [CountryResolver,CountryService],
 })
 export class CountryModule {}

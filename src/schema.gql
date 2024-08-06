@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type country {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  findAllCountries: [country!]!
+  getCountryById(id: String!): country!
+  countCountries: Float!
+  findCountriesWithPagination(page: Float, limit: Float): [country!]!
+}
+
+type Mutation {
+  createCountry(createCountryDto: CreateCountryDto!): country!
+  deleteCountry(id: String!): Float!
+  updateCountry(id: String!, updateCountryDto: UpdateCountryDto!): country!
+}
+
+input CreateCountryDto {
+  name: String!
+}
+
+input UpdateCountryDto {
+  name: String!
+}

@@ -1,10 +1,11 @@
-import { createZodDto } from "nestjs-zod";
-import { z } from "nestjs-zod/z";
+import { Field, InputType } from "@nestjs/graphql";
+import { MinLength } from "class-validator";
 
-const CountrySchema = z.object({
-  name: z.string().min(5).toLowerCase().describe("This is an name"),
-});
 
-export type CountryType = z.infer<typeof CountrySchema>;
-
-export class CreateCountryDto extends createZodDto(CountrySchema) {}
+@InputType()
+export class CreateCountryDto {
+  
+  @Field()
+  @MinLength(10)
+  name: string
+}

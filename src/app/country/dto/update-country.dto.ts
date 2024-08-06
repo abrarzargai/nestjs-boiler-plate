@@ -1,4 +1,7 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { CreateCountryDto } from "./create-country.dto";
-
-export class UpdateCountryDto extends PartialType(CreateCountryDto) {}
+import { Field, InputType } from "@nestjs/graphql";
+@InputType() //decorator marks the class as an input type for GraphQL
+export class UpdateCountryDto  {
+      
+  @Field()
+  name: string
+}

@@ -6,6 +6,9 @@ import { ZodValidationPipe } from "nestjs-zod";
 import { CountryModule } from "./app/country/country.module";
 import { UserModule } from "./app/user/user.module";
 import { databaseConfigs } from "./config/database.config";
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -13,10 +16,15 @@ import { databaseConfigs } from "./config/database.config";
     ConfigModule.forRoot(),
     //typeorm configuration
     TypeOrmModule.forRoot(databaseConfigs),
-
+    //graphQL   configurations:
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: true,
+      autoSchemaFile:join(process.cwd(), 'src/schema.gql'),
+    }),
     // App Modules
     CountryModule,
-    UserModule
+    // UserModule
   ],
   providers: [
     {
